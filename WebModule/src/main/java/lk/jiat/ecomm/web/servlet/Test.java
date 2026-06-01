@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lk.jiat.ecomm.user.dto.UserDTO;
+import lk.jiat.ecomm.user.remote.TestRemote;
 import lk.jiat.ecomm.user.remote.UserRemote;
 
 import javax.naming.InitialContext;
@@ -21,12 +22,17 @@ public class Test extends HttpServlet {
 
         try {
             InitialContext ic = new InitialContext();
-            UserRemote userRemote = (UserRemote) ic.lookup("java:global/ecomm-user-1.0/UserSessionBean");
+            TestRemote tr = (TestRemote) ic.lookup("java:global/ecomm-user-1.0/TestSessionBean");
 
-            List<UserDTO> allUsers = userRemote.getAllUsers();
-            for (UserDTO user : allUsers) {
-                user.toString();
-            }
+            String test = tr.test();
+            resp.getWriter().println("Result "+test);
+
+
+//            List<UserDTO> allUsers = userRemote.getAllUsers();
+//            for (UserDTO user : allUsers) {
+//                user.toString();
+//            }
+
 
         } catch (NamingException e) {
             throw new RuntimeException(e);
