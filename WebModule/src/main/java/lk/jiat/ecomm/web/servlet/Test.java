@@ -5,6 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import lk.jiat.ecomm.user.dto.UserDTO;
 import lk.jiat.ecomm.user.remote.TestRemote;
 import lk.jiat.ecomm.user.remote.UserRemote;
@@ -21,11 +22,23 @@ public class Test extends HttpServlet {
         resp.getWriter().println("Ecomm web module is working...");
 
         try {
-            InitialContext ic = new InitialContext();
-            TestRemote tr = (TestRemote) ic.lookup("java:global/ecomm-user-1.0/TestSessionBean");
+
+            TestRemote tr;
+                InitialContext ic = new InitialContext();
+                tr = (TestRemote) ic.lookup("java:global/ecomm-user-1.0/TestSessionBean");
+
+//            HttpSession session = req.getSession();
+//            if (session.getAttribute("testBean") == null) {
+//
+//                session.setAttribute("testBean", tr);
+//
+//            }else{
+//                tr = (TestRemote) session.getAttribute("testBean");
+//            }
+
 
             String test = tr.test();
-            resp.getWriter().println("Result "+test);
+            resp.getWriter().println("Result " + test);
 
 
 //            List<UserDTO> allUsers = userRemote.getAllUsers();
