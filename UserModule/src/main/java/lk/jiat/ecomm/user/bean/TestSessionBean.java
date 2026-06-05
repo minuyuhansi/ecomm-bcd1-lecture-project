@@ -8,7 +8,7 @@ import jakarta.ejb.Stateful;
 import jakarta.ejb.Stateless;
 import lk.jiat.ecomm.user.remote.TestRemote;
 
-@Stateful
+@Stateless
 public class TestSessionBean implements TestRemote {
 
     int i;
