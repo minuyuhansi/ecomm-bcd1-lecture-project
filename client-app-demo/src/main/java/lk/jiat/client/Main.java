@@ -18,9 +18,11 @@ public class Main {
 
             InitialContext ic = new InitialContext(props);
 
-            TestRemote testRemote = (TestRemote) ic.lookup("java:global/ecomm-user-1.0/TestSessionBean");
-            testRemote.test();
+//            TestRemote testRemote = (TestRemote) ic.lookup("java:global/ecomm-user-1.0/TestSessionBean");
+//            testRemote.test();
 
+            String name = ic.lookup("Name").toString();
+            System.out.println("Name: " + name);
 
         } catch (NamingException e) {
             throw new RuntimeException(e);

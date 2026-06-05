@@ -8,7 +8,7 @@ import jakarta.ejb.Stateful;
 import jakarta.ejb.Stateless;
 import lk.jiat.ecomm.user.remote.TestRemote;
 
-@Stateless
+@Stateful
 public class TestSessionBean implements TestRemote {
 
     int i;
@@ -36,7 +36,9 @@ public class TestSessionBean implements TestRemote {
     @Override
     public String test() {
 
-        i++;
+        for (int i=0; i < 10; i++) {
+            this.i++;
+        }
 
         try {
             Thread.sleep(5000);
