@@ -5,15 +5,15 @@ import jakarta.annotation.PreDestroy;
 import jakarta.ejb.*;
 import lk.jiat.ecomm.user.remote.TestRemote;
 
-@Stateful(mappedName = "TestSessionBean")
+@Stateful(mappedName = "TestNewSessionBean")
 //@Startup
-public class TestSessionBean implements TestRemote {
+public class TestNewSessionBean implements TestRemote {
 
     int i;
 
     @PostConstruct
     public void init() {
-        System.out.println("TestSessionBean instance created... ");
+        System.out.println("TestNewSessionBean instance created... ");
     }
 
     @PreDestroy
