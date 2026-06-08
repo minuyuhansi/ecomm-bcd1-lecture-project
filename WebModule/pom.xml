@@ -31,6 +31,12 @@
             <type>ejb-client</type>
         </dependency>
 
+        <dependency>
+            <groupId>lk.jiat</groupId>
+            <artifactId>ecomm-cdi</artifactId>
+            <version>1.0</version>
+            <type>ejb-client</type>
+        </dependency>
     </dependencies>
 
     <build>
