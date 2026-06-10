@@ -24,9 +24,6 @@ public class Test extends HttpServlet {
 //    @EJB(lookup = "java:global/ecomm-user-1.0/TestNewSessionBean")
 //    /// J2EE 5+ declarative declaration
 //    private TestRemote testRemote;
-//
-//    @EJB
-//    private AppSetting appSetting;
 
     @Inject
     private MyApp myApp;
