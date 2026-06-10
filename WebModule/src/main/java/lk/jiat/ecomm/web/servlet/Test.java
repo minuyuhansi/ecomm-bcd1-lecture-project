@@ -31,6 +31,9 @@ public class Test extends HttpServlet {
     @Inject
     private MyApp myApp;
 
+    @EJB
+    private AppSetting appSetting;
+
     @Override
     public void init() throws ServletException {
         System.out.println("Test servlet initialized... ");
@@ -42,44 +45,8 @@ public class Test extends HttpServlet {
         resp.getWriter().println("Ecomm web module is working...");
 
 //        req.getSession();
-
         myApp.doSomething();
-
-//        resp.getWriter().println("App Name: " + appSetting.getName());
-
-//        testRemote.test();
-//        InitialContext ctx = null;  /// J2EE 1+
-
-
-//        try {
-//
-//            TestRemote tr;
-//                InitialContext ic = new InitialContext();
-//                tr = (TestRemote) ic.lookup("java:global/ecomm-user-1.0/TestSessionBean");
-//
-////            HttpSession session = req.getSession();
-////            if (session.getAttribute("testBean") == null) {
-////
-////                session.setAttribute("testBean", tr);
-////
-////            }else{
-////                tr = (TestRemote) session.getAttribute("testBean");
-////            }
-//
-//
-//            String test = tr.test();
-//            resp.getWriter().println("Result " + test);
-//
-////            tr.remove();
-
-////            List<UserDTO> allUsers = userRemote.getAllUsers();
-////            for (UserDTO user : allUsers) {
-////                user.toString();
-////            }
-
-//        } catch (NamingException e) {
-//            throw new RuntimeException(e);
-//        }
+        resp.getWriter().println("App Name: " + appSetting.getName());
 
     }
 }

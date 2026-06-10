@@ -2,19 +2,29 @@ package lk.jiat.ecomm.ejb;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.ejb.Singleton;
+import jakarta.ejb.Stateful;
+import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
+import lk.jiat.ecomm.annotation.Email;
+import lk.jiat.ecomm.annotation.SMS;
 import lk.jiat.ecomm.cdi.MyService;
+import lk.jiat.ecomm.cdi.NotificationService;
 import lk.jiat.ecomm.ejb.remote.AppSetting;
 
-@Singleton
+@Stateless
 public class AppSettingSessionBean implements AppSetting {
 
     @Inject
     private MyService myService;
 
+    @Inject
+    @SMS
+    private NotificationService notificationService;
+
     @Override
     public String getName() {
-        myService.doSomething();
+        notificationService.notify("This is a notification from AppSettingSessionBean.");
+//        myService.doSomething();
         return "Ecomm EE Application";
     }
 
