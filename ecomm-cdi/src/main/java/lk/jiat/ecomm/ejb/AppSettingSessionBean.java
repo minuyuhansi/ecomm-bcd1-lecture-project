@@ -4,7 +4,9 @@ import jakarta.annotation.PostConstruct;
 import jakarta.ejb.Singleton;
 import jakarta.ejb.Stateful;
 import jakarta.ejb.Stateless;
+import jakarta.enterprise.event.Event;
 import jakarta.inject.Inject;
+import lk.jiat.ecomm.annotation.Console;
 import lk.jiat.ecomm.annotation.Email;
 import lk.jiat.ecomm.annotation.SMS;
 import lk.jiat.ecomm.cdi.MyService;
@@ -21,9 +23,15 @@ public class AppSettingSessionBean implements AppSetting {
     @SMS
     private NotificationService notificationService;
 
+    @Inject
+    @Console
+    private Event<String> logEvent;
+
     @Override
     public String getName() {
         notificationService.notify("This is a notification from AppSettingSessionBean.");
+
+        logEvent.fire("AppSettingSessionBean.getName() called.");
 //        myService.doSomething();
         return "Ecomm EE Application";
     }
